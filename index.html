@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do-it Task Manager</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="profile">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=faces" alt="Profile" class="profile-pic">
+                <div class="profile-info">
+                    <h2>Do-it</h2>
+                    <p class="username">vivek</p>
+                </div>
+            </div>
+            <hr>
+            <nav class="nav-menu">
+                <div class="nav-item active" data-view="today">
+                    <span class="nav-icon">📅</span> Today Tasks
+                </div>
+                <div class="task-categories">
+                    <!-- Personal Category -->
+                    <div class="category personal">
+                        <span class="bullet" style="background: #FD99AF;"></span> <!-- Pink Bullet for Personal -->
+                        <div class="category-name">Personal</div>
+                        <div class="task-list"></div> <!-- Tasks for Personal category will go here -->
+                    </div>
+
+                    <!-- Work Category -->
+                    <div class="category work">
+                        <span class="bullet" style="background: #FAC608;"></span> <!-- Gold Bullet for Work -->
+                        <div class="category-name">Work</div>
+                        <div class="task-list"></div> <!-- Tasks for Work category will go here -->
+                    </div>
+
+                    <!-- Freelance Category -->
+                    <div class="category freelance">
+                        <span class="bullet" style="background: #3FD4F4;"></span> <!-- Sky Blue Bullet for Freelance -->
+                        <div class="category-name">Freelance</div>
+                        <div class="task-list"></div> <!-- Tasks for Freelance category will go here -->
+                    </div>
+
+                    <!-- Add Filter section under Work -->
+                    <div class="category add-filter">
+                        <span class="bullet" style="background: #6d6969"></span> Add Filter
+                    </div>
+                </div>
+
+                <!-- Other Navigation Items -->
+                <div class="nav-item" data-view="scheduled">
+                    <span class="nav-icon">📅</span> Scheduled Tasks
+                </div>
+                <div class="nav-item" data-view="settings">
+                    <span class="nav-icon">⚙️</span> Settings
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Today View -->
+            <div class="view" id="today-view">
+                <h1>Today's Main Focus</h1>
+                <h2 class="focus-task">Design Team Meeting</h2>
+
+                <!-- Task Input Container -->
+                <div class="task-input-container">
+                    <!-- Bullet Options -->
+                    <div class="bullet-options">
+                        <span class="bullet" style="background: #FD99AF" data-category="personal"></span>
+                        <span class="bullet" style="background: #3FD4F4" data-category="freelance"></span>
+                        <span class="bullet" style="background: #FAC608" data-category="work"></span>
+                    </div>
+
+                    <!-- Input Field -->
+                    <input type="text" class="task-input" placeholder="What is your next task?">
+
+                    <!-- Input Icons -->
+                    <div class="input-icons">
+                        <span class="calendar-icon" style="cursor: pointer;">📅</span>
+                        <div class="calendar-dropdown">
+                            <!-- Calendar content here -->
+                            <div class="calendar-picker">
+                                <label for="calendar-date">Choose a date:</label>
+                                <input type="date" id="calendar-date" class="calendar-date">
+                            </div>
+                            <div class="time-picker">
+                                <label for="calendar-time">Choose a time:</label>
+                                <input type="text" id="calendar-time" class="calendar-time" placeholder="Select time">
+                            </div>
+                        </div>
+                    </div>
+                        <span class="plus-icon" style="cursor: pointer;">➕</span>
+                    </div>
+                </div>
+                
+
+                <!-- Tasks List -->
+                <div class="tasks-list">
+                    <!-- New tasks will appear here -->
+                </div>
+            </div>
+
+            <!-- Settings View (Hidden by Default) -->
+            <div class="view" id="settings-view" style="display: none;">
+                <div class="settings-container">
+                    <!-- Profile Section -->
+                    <div class="settings-section">
+                        <div class="section-header">
+                            <span class="icon">&#128100;</span> <!-- Profile icon (Unicode for user) -->
+                            <h2>Profile</h2>
+                        </div>
+                        <div class="settings-item">
+                            <span class="item-text">Edit Profile</span>
+                            <span class="arrow">></span> <!-- Right arrow (Unicode) -->
+                        </div>
+                        <div class="settings-item">
+                            <span class="item-text">Change Password</span>
+                            <span class="arrow">></span> <!-- Right arrow (Unicode) -->
+                        </div>
+                        <div class="settings-item">
+                            <span class="item-text">Privacy</span>
+                            <span class="arrow">></span> <!-- Right arrow (Unicode) -->
+                        </div>
+                    </div>
+
+                    <!-- Notifications Section -->
+                    <div class="settings-section">
+                        <div class="section-header">
+                            <span class="icon">&#128276;</span> <!-- Bell icon (Unicode for notifications) -->
+                            <h2>Notifications</h2>
+                        </div>
+                        <div class="settings-toggle">
+                            <span>Notifications</span>
+                            <label class="toggle">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-toggle">
+                            <span>Task Notifications</span>
+                            <label class="toggle">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- More Section -->
+                    <div class="settings-section">
+                        <div class="section-header">
+                            <span class="icon">&#9881;</span> <!-- Settings icon (Unicode) -->
+                            <h2>More</h2>
+                        </div>
+                        <div class="settings-item">
+                            <span class="item-text">Language</span>
+                            <span class="arrow">></span>
+                        </div>
+                        <div class="settings-item">
+                            <span class="item-text">Country</span>
+                            <span class="arrow">></span>
+                        </div>
+                    </div>
+                </div>
+
+                
+        </main>
+    </div>
+
+    <!-- Add jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Add jQuery Timepicker -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-timepicker/jquery.timepicker.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery-timepicker/jquery.timepicker.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
